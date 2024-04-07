@@ -14,7 +14,7 @@ class EditNoteView extends StatelessWidget {
         children: const [
           CustomAppBar(
             icon: Icon(
-              Icons.save_rounded,
+              Icons.check_rounded,
             ),
             title: 'Edit Note',
           ),
@@ -28,7 +28,7 @@ class EditNoteView extends StatelessWidget {
             maxLines: 7,
           ),
           SizedBox(height: 32),
-          CustomBotton(),
+          //CustomBotton(),
         ],
       ),
     );
