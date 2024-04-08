@@ -14,11 +14,11 @@ class NoteItem extends StatelessWidget {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(
-            builder: (context) {
-              return const EditNoteView();
-            },
-          ),
+          MaterialPageRoute(builder: (context) {
+            return EditNoteView(
+              note: note,
+            );
+          }),
         );
       },
       child: Container(

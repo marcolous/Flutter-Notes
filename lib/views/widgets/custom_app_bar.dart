@@ -3,7 +3,7 @@ import 'package:notes_app/views/widgets/custom_icon.dart';
 
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({super.key, required this.icon, required this.title, this.color});
-  final Icon icon;
+  final IconButton icon;
   final String title;
   final Color? color;
   @override
