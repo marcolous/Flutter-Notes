@@ -1,35 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app/const/const.dart';
-import 'package:notes_app/cubits/add_note_cubit/add_note_cubit.dart';
+import 'package:notes_app/models/note_model.dart';
+import 'package:notes_app/views/widgets/colors_list_view.dart';
 
-class ColorItem extends StatelessWidget {
-  const ColorItem({super.key, required this.isActive, required this.color});
-  final bool isActive;
-  final Color color;
+class EditNoteColorList extends StatefulWidget {
+  const EditNoteColorList({super.key, required this.note});
+  final NoteModel note;
   @override
-  Widget build(BuildContext context) {
-    return isActive
-        ? CircleAvatar(
-            radius: 20,
-            backgroundColor: color,
-          )
-        : CircleAvatar(
-            radius: 16,
-            backgroundColor: color,
-          );
+  State<EditNoteColorList> createState() => _EditNoteColorListState();
+}
+
+class _EditNoteColorListState extends State<EditNoteColorList> {
+  late int currentIndex;
+  @override
+  void initState() {
+    currentIndex = kColors.indexOf(Color(widget.note.color));
+    super.initState();
   }
-}
 
-class ColorsListView extends StatefulWidget {
-  const ColorsListView({super.key});
-
-  @override
-  State<ColorsListView> createState() => _ColorsListViewState();
-}
-
-class _ColorsListViewState extends State<ColorsListView> {
-  int currentIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -52,7 +40,7 @@ class _ColorsListViewState extends State<ColorsListView> {
               child: GestureDetector(
                 onTap: () {
                   currentIndex = index;
-                  BlocProvider.of<AddNoteCubit>(context).color = kColors[index];
+                  widget.note.color = kColors[index].value;
                   setState(() {});
                 },
                 child: ColorItem(
@@ -67,5 +55,3 @@ class _ColorsListViewState extends State<ColorsListView> {
     );
   }
 }
-
-

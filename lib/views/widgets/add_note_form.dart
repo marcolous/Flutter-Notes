@@ -55,12 +55,12 @@ class _AddNoteFormState extends State<AddNoteForm> {
                     formKey.currentState!.save();
                     var currentDate = DateTime.now();
                     var formattedDate = DateFormat.yMMMd().format(currentDate);
-
+                    var color = BlocProvider.of<AddNoteCubit>(context).color;
                     var noteModel = NoteModel(
                         title: title!,
                         subTitle: subTitle!,
                         date: formattedDate,
-                        color: Colors.blue.value);
+                        color: color!.value);
                     BlocProvider.of<AddNoteCubit>(context).addNote(noteModel);
                   } else {
                     autovalidateMode = AutovalidateMode.always;
@@ -75,4 +75,3 @@ class _AddNoteFormState extends State<AddNoteForm> {
     );
   }
 }
-
